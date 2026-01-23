@@ -158,7 +158,7 @@ markers <- c(
   "Konkurující stanovisko"
 )
 
-subset_disent2 <- subset_disent %>%
+subset_disent2 <- subset_single_disent %>%
   mutate(
     separate_opinion_extracted = vapply(
       text,
@@ -175,10 +175,10 @@ subset_disent2 <- subset_disent %>%
 
 ```{r}
 
-n_before <- nrow(subset_disent)
+n_before <- nrow(subset_single_disent)
 n_after  <- nrow(subset_disent2)
 
-lost_docs <- setdiff(subset_disent$doc_id, subset_disent2$doc_id)
+lost_docs <- setdiff(subset_single_disent$doc_id, subset_disent2$doc_id)
 
 cat("Rows in subset_disent  :", n_before, "\n")
 cat("Rows in subset_disent2 :", n_after,  "\n")
@@ -263,4 +263,10 @@ subset_disent2 %>%
   expand_limits(y = 0) +
   scale_y_continuous(expand = expansion(mult = c(0, 0.12)))
 
+```
+
+# Export
+```{r export-csv, echo=TRUE}
+write.csv(subset_disent2, file.path("~/Desktop/Rko/DIPLOMKA/Ghostwriters", "subset_disent2.csv"), row.names = FALSE)
+write.csv(subset,        file.path("~/Desktop/Rko/DIPLOMKA/Ghostwriters", "subset.csv"),        row.names = FALSE)
 ```
