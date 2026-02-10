@@ -1,0 +1,163 @@
+Baseline authorship attribution results
+Authors: 19 (min 5 dissents)
+Samples: 277, Features: 563
+Feature sets: ['function_words', 'surface', 'char_ngrams', 'pos_ngrams']
+============================================================
+
+Method: burrows_delta
+Accuracy: 0.632
+Rank-3 accuracy: 0.801
+
+                    precision    recall  f1-score   support
+
+       David Uhlíř       0.33      0.17      0.22         6
+  Eliška Wagnerová       0.50      0.18      0.27        22
+       Iva Brožová       0.89      0.89      0.89         9
+        Ivana Janů       0.34      0.50      0.41        32
+         Jan Filip       1.00      0.87      0.93        31
+         Jan Musil       0.62      1.00      0.77        23
+      Jiří Nykodým       0.00      0.00      0.00         5
+      Jiří Zemánek       0.58      0.58      0.58        12
+       Josef Fiala       0.51      0.86      0.64        21
+Kateřina Šimáčková       0.75      0.50      0.60         6
+      Ludvík David       0.73      0.73      0.73        11
+ Michaela Židlická       1.00      0.20      0.33         5
+  Miloslav Výborný       0.75      0.33      0.46         9
+ Pavel Varvařovský       0.82      0.64      0.72        14
+  Radovan Suchánek       0.63      0.80      0.71        30
+   Stanislav Balík       0.90      0.53      0.67        17
+    Vladimír Kůrka       0.83      0.50      0.62        10
+ Vladimír Sládeček       0.67      0.40      0.50         5
+   Vojtěch Šimíček       0.78      0.78      0.78         9
+
+          accuracy                           0.63       277
+         macro avg       0.67      0.55      0.57       277
+      weighted avg       0.66      0.63      0.62       277
+
+----------------------------------------
+
+Method: cosine_delta
+Accuracy: 0.643
+Rank-3 accuracy: 0.827
+
+                    precision    recall  f1-score   support
+
+       David Uhlíř       0.00      0.00      0.00         6
+  Eliška Wagnerová       0.62      0.36      0.46        22
+       Iva Brožová       0.86      0.67      0.75         9
+        Ivana Janů       0.37      0.75      0.49        32
+         Jan Filip       0.97      0.90      0.93        31
+         Jan Musil       0.79      0.96      0.86        23
+      Jiří Nykodým       0.00      0.00      0.00         5
+      Jiří Zemánek       1.00      0.67      0.80        12
+       Josef Fiala       0.76      0.76      0.76        21
+Kateřina Šimáčková       0.75      0.50      0.60         6
+      Ludvík David       0.67      0.73      0.70        11
+ Michaela Židlická       1.00      0.40      0.57         5
+  Miloslav Výborný       0.80      0.44      0.57         9
+ Pavel Varvařovský       0.73      0.57      0.64        14
+  Radovan Suchánek       0.56      0.77      0.65        30
+   Stanislav Balík       0.78      0.41      0.54        17
+    Vladimír Kůrka       0.50      0.30      0.38        10
+ Vladimír Sládeček       0.00      0.00      0.00         5
+   Vojtěch Šimíček       0.67      0.89      0.76         9
+
+          accuracy                           0.64       277
+         macro avg       0.62      0.53      0.55       277
+      weighted avg       0.67      0.64      0.63       277
+
+----------------------------------------
+
+Method: SGDClassifier(random_state=42)
+Accuracy: 0.686
+
+                    precision    recall  f1-score   support
+
+       David Uhlíř       0.00      0.00      0.00         6
+  Eliška Wagnerová       0.54      0.59      0.57        22
+       Iva Brožová       1.00      0.78      0.88         9
+        Ivana Janů       0.43      0.62      0.51        32
+         Jan Filip       0.91      1.00      0.95        31
+         Jan Musil       0.85      1.00      0.92        23
+      Jiří Nykodým       0.00      0.00      0.00         5
+      Jiří Zemánek       0.80      0.67      0.73        12
+       Josef Fiala       0.82      0.86      0.84        21
+Kateřina Šimáčková       1.00      0.33      0.50         6
+      Ludvík David       0.75      0.55      0.63        11
+ Michaela Židlická       1.00      0.40      0.57         5
+  Miloslav Výborný       0.86      0.67      0.75         9
+ Pavel Varvařovský       0.83      0.71      0.77        14
+  Radovan Suchánek       0.60      0.83      0.69        30
+   Stanislav Balík       0.47      0.47      0.47        17
+    Vladimír Kůrka       0.67      0.40      0.50        10
+ Vladimír Sládeček       0.50      0.20      0.29         5
+   Vojtěch Šimíček       0.86      0.67      0.75         9
+
+          accuracy                           0.69       277
+         macro avg       0.68      0.57      0.60       277
+      weighted avg       0.69      0.69      0.67       277
+
+----------------------------------------
+
+Method: SGDClassifier(loss='log_loss', random_state=42)
+Accuracy: 0.697
+
+                    precision    recall  f1-score   support
+
+       David Uhlíř       0.00      0.00      0.00         6
+  Eliška Wagnerová       0.58      0.64      0.61        22
+       Iva Brožová       1.00      0.56      0.71         9
+        Ivana Janů       0.45      0.69      0.54        32
+         Jan Filip       0.91      1.00      0.95        31
+         Jan Musil       0.82      1.00      0.90        23
+      Jiří Nykodým       0.00      0.00      0.00         5
+      Jiří Zemánek       0.89      0.67      0.76        12
+       Josef Fiala       0.82      0.86      0.84        21
+Kateřina Šimáčková       1.00      0.33      0.50         6
+      Ludvík David       0.67      0.55      0.60        11
+ Michaela Židlická       1.00      0.40      0.57         5
+  Miloslav Výborný       1.00      0.67      0.80         9
+ Pavel Varvařovský       0.83      0.71      0.77        14
+  Radovan Suchánek       0.61      0.83      0.70        30
+   Stanislav Balík       0.50      0.53      0.51        17
+    Vladimír Kůrka       0.80      0.40      0.53        10
+ Vladimír Sládeček       0.50      0.20      0.29         5
+   Vojtěch Šimíček       0.88      0.78      0.82         9
+
+          accuracy                           0.70       277
+         macro avg       0.70      0.57      0.60       277
+      weighted avg       0.71      0.70      0.68       277
+
+----------------------------------------
+
+Method: KNeighborsClassifier(n_neighbors=3)
+Accuracy: 0.419
+
+                    precision    recall  f1-score   support
+
+       David Uhlíř       0.00      0.00      0.00         6
+  Eliška Wagnerová       0.18      0.36      0.24        22
+       Iva Brožová       1.00      0.11      0.20         9
+        Ivana Janů       0.25      0.41      0.31        32
+         Jan Filip       0.75      0.97      0.85        31
+         Jan Musil       0.34      0.91      0.49        23
+      Jiří Nykodým       0.00      0.00      0.00         5
+      Jiří Zemánek       0.57      0.33      0.42        12
+       Josef Fiala       0.90      0.43      0.58        21
+Kateřina Šimáčková       1.00      0.33      0.50         6
+      Ludvík David       0.33      0.09      0.14        11
+ Michaela Židlická       0.50      0.20      0.29         5
+  Miloslav Výborný       0.00      0.00      0.00         9
+ Pavel Varvařovský       1.00      0.07      0.13        14
+  Radovan Suchánek       0.56      0.50      0.53        30
+   Stanislav Balík       0.29      0.12      0.17        17
+    Vladimír Kůrka       0.57      0.40      0.47        10
+ Vladimír Sládeček       0.00      0.00      0.00         5
+   Vojtěch Šimíček       1.00      0.44      0.62         9
+
+          accuracy                           0.42       277
+         macro avg       0.49      0.30      0.31       277
+      weighted avg       0.51      0.42      0.39       277
+
+----------------------------------------
+
