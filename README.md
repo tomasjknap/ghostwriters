@@ -40,3 +40,7 @@ This dataset focuses exclusively on dissenting opinions and is used to construct
   footnote no. 13 _"I have been able to partition the text into an implicit structure such as the heading, procedure history, parties’ arguments, or court arguments using a supervised machine learning algorithm. However, the decisions do not lend themselves to a simple and reliable regex partitioning. The only clear general rule is that the first paragraph most of the time contains the heading of the decision, in which the composition as well as the parties of the case can be located."_
   Comments from the author: _"Ale nebylo to nic fancy, dneska by to určitě šlo líp nějakým LLM. Ale tehdy to bylo basic word2vec (a jeho různé odnože) reprezentace textu, vytvoření trénovacího datasetu a následné použití tehdy to byly tuším random forests, který vycházely nejlíp, nakonec jen nějaké zajištění kontinuity (to dost zvýšilo přesnost - že pokud je nějaký odstavec obklopen odstavci stejné kategorie, tak to přepíše tu predikovanou hodnotu)."_
 - budeme sbírat předchozí rozhodnutí u soudců? co akademici? a hlavně, **advokáti??**
+
+## 5. minutes 10.2.
+
+TP: ze ###subset_disent2 vybere separate_opinion hodnoty Kateřina Šimáčková a Vojtěch Šimíček - připraví pilot pro fingerprint soudců 
