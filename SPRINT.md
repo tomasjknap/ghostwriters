@@ -1,3 +1,111 @@
+## Backlog
+
+Prioritized list of topics for future work. Items near the top are higher
+priority (foundations first, speculative ideas last).
+
+### High priority — foundations
+
+- [ ] **Feature ablation study**: Run LOO-CV with each of the 4 feature sets
+  independently and in combinations. Understand what we have before adding more.
+  Already supported via `--features` flag. (~0.5 day)
+- [ ] **Text chunking / length normalization**: Split long dissents into
+  fixed-size segments (~2,000 words). Benefits: more training samples, removes
+  document length as a confound. Could substantially help small-author
+  classification. (~1 day)
+- [ ] **Probability output + confidence calibration**: Extract `predict_proba()`
+  from logistic regression, convert Delta distances to probabilities via softmax.
+  Add Platt scaling / isotonic regression for calibration. Critical for any real
+  ghostwriting claims. (~1 day)
+- [ ] **Within-author variance analysis**: Rosenthal & Yoon bootstrapped χ²
+  approach on function-word usage per judge. High variance = possible ghostwriting
+  even in dissents. Directly addresses the Janů anomaly (32 texts, F1=0.54).
+  (~0.5 day)
+
+### Medium priority — easy wins
+
+- [ ] **XGBoost classifier**: Gradient boosting handles feature interactions and
+  class imbalance better than linear models. Needs careful regularization with
+  small n. (~0.5 day)
+- [ ] **Feature importance / author signatures**: Per-author discriminative
+  features. Options: logistic regression weights, permutation importance, SHAP
+  values with XGBoost. Key for interpretability. (~1–2 days)
+- [ ] **Save fingerprints for application**: Serialize trained models + scaler +
+  feature vocabulary. Build `predict.py` to score new texts (majority opinions).
+  Bridge to the actual ghostwriting detection goal. (~0.5 day)
+- [ ] **Readability / comprehensibility metrics**: Czech-adapted readability
+  index, dependency tree depth (from UDPipe), subordinate clause ratio, passive
+  voice frequency. Genuine style markers, low-hanging fruit. (~1 day)
+- [ ] **Higher minimum threshold experiments**: Test with ≥9 or ≥10 dissents per
+  author. Fewer authors but more reliable per-author estimates. (~0.5 day)
+- [ ] **Hyperparameter tuning**: Nested CV (inner loop for selection, outer LOO
+  for evaluation). Especially important for XGBoost. (~1 day)
+
+### Lower priority — exploratory
+
+- [ ] **RobeCzech embeddings**: Mean-pooled [CLS] embeddings as 768-dim feature
+  vector. High potential but overfitting risk with 277 samples — PCA first. GPU
+  recommended. (~1.5 days)
+- [ ] **Legal-domain specific features**: Citation patterns, formulaic phrase
+  usage, legal terminology density. Risk of topic contamination if judges handle
+  different case types. Needs careful scoping. (~2–4 days)
+- [ ] **Topic-semantic analysis**: Latin quotes, judicate references, European
+  Court citations. Similar topic-contamination risk as above. Latin quotes
+  specifically may be a genuine style marker. (~2 days)
+- [ ] **Speech acts / rhetorical features**: Hedging expressions, assertiveness
+  markers, rhetorical questions, imperative constructions. Theoretically
+  appealing but limited Czech tooling. Scope to lexicon-based approach first.
+  (~2–5 days)
+
+---
+
+## Sprint 2 — 2026-02-19 → 2026-02-26
+
+### Goal
+
+Strengthen the baseline with ablation analysis, improve handling of small-sample
+authors via text chunking, and prepare the pipeline for ghostwriting detection by
+adding probability output and saving trained fingerprints.
+
+### Tasks
+
+1. **Feature ablation study**
+   - Run LOO-CV with each feature set alone: function_words, surface,
+     char_ngrams, pos_ngrams
+   - Run key combinations (e.g., function_words + surface, all minus one)
+   - Document which features contribute most to overall accuracy
+   - Output: ablation results table in methodology_and_results.md
+
+2. **Text chunking**
+   - Implement document splitting into ~2,000-word segments
+   - Re-run pipeline with chunked texts → more training samples
+   - Compare accuracy with/without chunking
+   - Handle edge case: chunks inherit the parent document's author label
+
+3. **Probability output + calibration**
+   - Expose `predict_proba()` from logistic regression
+   - Convert Delta distances to probabilities via softmax
+   - Add confidence calibration (Platt scaling)
+   - Output: per-document probability distributions over all 19 authors
+
+4. **Save fingerprints**
+   - Serialize trained model, scaler, and feature vocabulary
+   - Build `predict.py` script to load fingerprint and score new texts
+   - Test on held-out dissents as sanity check
+
+5. **Within-author variance analysis**
+   - Implement bootstrapped χ² variance per judge (Rosenthal & Yoon method)
+   - Rank judges by stylistic consistency
+   - Flag high-variance authors for further investigation
+
+### Deliverables
+
+- Updated `methodology_and_results.md` with ablation results and variance analysis
+- Chunking implementation in `preprocessing.py`
+- `predict.py` script for scoring new texts
+- Probability-calibrated output per document
+
+---
+
 ## Sprint 1 — 2026-02-09 → 2026-02-16
 
 ### Goal
