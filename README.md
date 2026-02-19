@@ -40,3 +40,32 @@ This dataset focuses exclusively on dissenting opinions and is used to construct
   footnote no. 13 _"I have been able to partition the text into an implicit structure such as the heading, procedure history, parties’ arguments, or court arguments using a supervised machine learning algorithm. However, the decisions do not lend themselves to a simple and reliable regex partitioning. The only clear general rule is that the first paragraph most of the time contains the heading of the decision, in which the composition as well as the parties of the case can be located."_
   Comments from the author: _"Ale nebylo to nic fancy, dneska by to určitě šlo líp nějakým LLM. Ale tehdy to bylo basic word2vec (a jeho různé odnože) reprezentace textu, vytvoření trénovacího datasetu a následné použití tehdy to byly tuším random forests, který vycházely nejlíp, nakonec jen nějaké zajištění kontinuity (to dost zvýšilo přesnost - že pokud je nějaký odstavec obklopen odstavci stejné kategorie, tak to přepíše tu predikovanou hodnotu)."_
 - budeme sbírat předchozí rozhodnutí u soudců? co akademici? a hlavně, **advokáti??**
+
+## 5. minutes 10.2.
+
+TP: ze ###subset_disent2 vybere separate_opinion hodnoty Kateřina Šimáčková a Vojtěch Šimíček - připraví pilot pro fingerprint soudců 
+
+
+
+
+DATA
+
+csv struktura
+
+| Column | Description | Example |
+| :--- | :--- | :--- |
+| `doc_id` | ECLI identifier of the decision | `ECLI:CZ:US:2023:Pl.US.43.23.2` |
+| `text` | Full text of the decision (very long, this is why the file is so large) | Czech legal text |
+| `date_decision` | Date the decision was issued | `2023-12-06` |
+| `date_submission` | Date the case was submitted | `2023-10-09` |
+| `type_decision` | Type of decision — e.g. Usnesení (resolution) or Nález (finding/judgment) | `Nález` |
+| `importance` | Numeric importance rating | `2`, `3`, `4` |
+| `judge_rapporteur_name`| Name of the reporting judge | Jiří Zemánek |
+| `judge_rapporteur_id` | ID of the reporting judge | `J:35` |
+| `type_verdict` | Specific verdict type(s) — can be multiple values in R vector notation | `odmítnuto pro neoprávněnost navrhovatele` |
+| `grounds` | Whether decided on admissibility or merits | `merits` |
+| `separate_opinion` | Whether there was a separate/dissenting opinion (NA if none) | `NA` |
+| `formation` | Court formation — Plenum, Third Chamber, etc. | `Plenum` |
+| `outcome` | High-level outcome — rejected, granted, etc. | `granted` |
+| `length_proceeding` | Duration of the proceeding in days | `58` |
+
